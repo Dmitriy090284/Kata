@@ -6,7 +6,7 @@ public class Main {
         Exp userExp = new Exp();
         StringBuilder operand1 = new StringBuilder();
         StringBuilder operand2 = new StringBuilder();
-        String operator = "";
+        String operator;
         int i = 0; // индекс
         int e = 1; // счётчик
         boolean isArabic = false;
@@ -70,9 +70,11 @@ public class Main {
                 operand2.append(exp.charAt(i));
                 i++;
                 e++;
-
             }
 
+            if (i < lenght) {
+                throw new IllegalArgumentException("А вот и исключение, если кол-во операндов больше двух");
+            }
 
             int b = Integer.parseInt(operand2.toString());
 
@@ -112,10 +114,15 @@ public class Main {
                 e++;
             }
 
+            if (i < lenght) {
+                throw new IllegalArgumentException("А вот и исключение, если кол-во операндов больше двух");
+            }
+
+
             String r1 = operand1.toString();
             String r2 = operand2.toString();
 
-            int a = 0;
+            int a;
             switch (r1) {
                 case "I":
                     a = 1;
@@ -151,7 +158,7 @@ public class Main {
                     throw new IllegalArgumentException("операнды должны быть в диапазоне чисел от 1 до 10");
             }
 
-            int b = 0;
+            int b;
             switch (r2) {
                 case "I":
                     b = 1;
@@ -206,7 +213,6 @@ public class Main {
             if (p < 0) {
                 throw new IllegalArgumentException("в римской системе нет отрицательных чисел");
             }
-
 
 
             switch (p) {
@@ -520,7 +526,6 @@ public class Main {
 }
 
 class Exp {
-    String input;
     int a;
     int b;
     String operator;
